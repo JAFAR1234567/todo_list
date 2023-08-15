@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Add Todo{% endblock  %}
+{% block content %}
+  <div style="width: 500px; margin: auto;">
+    <h3 class="text-center text-uppercase my-2">Add Todo</h3>
+    <form  method="post">
+      {% csrf_token %}
+      {{form|crispy}}
+      <button class="btn btn-info text-white btn-sm text-uppercase" type="submit">submit</button>
+    </form>
+  </div>
+{% endblock  %}

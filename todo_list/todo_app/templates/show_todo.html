@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content%}
+<div style="width:80%;margin : auto;">
+    <h3 class="text-center my-2">Task</h3>
+
+    {% if todolist %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Task Title</th>
+                <th scope="col">Task Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in todolist %}
+            <tr>
+                <td>{{item.taskTitle}}</td>
+                <td>{{item.taskDescription}}</td>
+                <td>{{item.is_completed}}</td>
+                <td>
+                    <a href="{% url 'edit_todo' pk=item.id %}" class='btn btn-warning btn-sm'>Edit</a>
+                     <a class='btn btn-danger btn-sm' href="{% url 'delete_todo' pk=item.id %}">Delete</a>
+                     <a class='btn btn-success btn-sm' href="complete_todo">Complete</a>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h5 class="text-center">No Data avaiable</h5>
+    {% endif %}
+</div>
+
+{% endblock %}
